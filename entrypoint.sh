@@ -32,7 +32,7 @@ echo "Copying contents to git repo"
 mkdir -p $CLONE_DIR/$INPUT_DESTINATION_FOLDER
 for val in ${INPUT_SOURCE_FILE//,/ };
 do
-  cp --parents -R $val "$CLONE_DIR/$INPUT_DESTINATION_FOLDER/"  
+  cp --parents -R $val "$CLONE_DIR/$INPUT_DESTINATION_FOLDER"  
 done
 cd "$CLONE_DIR"
 
