@@ -30,9 +30,9 @@ fi
 
 echo "Copying contents to git repo"
 mkdir -p $CLONE_DIR/$INPUT_DESTINATION_FOLDER
-IFS=,
-for val in ${INPUT_SOURCE_FILE//,/ }
+for val in ${INPUT_SOURCE_FILE//,/ };
 do
+  echo "Copying " $val
   cp -R $val "$CLONE_DIR/$INPUT_DESTINATION_FOLDER"
 done
 cd "$CLONE_DIR"
