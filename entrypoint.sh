@@ -36,7 +36,7 @@ if [ -f "$val" ]
 then
   cp --parents -R $val "$CLONE_DIR/$INPUT_DESTINATION_FOLDER"
 else
-  echo "::warning file=$val::File not found, skipping copy."
+  echo "::warning $val not found, skipping copy."
 fi  
 done
 cd "$CLONE_DIR"
