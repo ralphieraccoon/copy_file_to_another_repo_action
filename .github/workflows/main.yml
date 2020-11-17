@@ -6,41 +6,15 @@ jobs:
   copy-file:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
 
-    - name: Mark test file
-      run: |-
-        echo $GITHUB_SHA > test02.md
-        echo $GITHUB_SHA > test03.md
-
-    - name: Ignore unchanged file
-      uses: dmnemec/copy_file_to_another_repo_action@master
+    - name: File exists warning
+      uses: ralphieraccoon/copy_file_to_another_repo_action@master
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source_file: 'test01.md'
-        destination_repo: 'dmnemec/release-test'
-        user_email: 'devin.nemec@gmail.com'
-        user_name: 'dmnemec'
-
-    - name: Push changed file
-      uses: dmnemec/copy_file_to_another_repo_action@master
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source_file: 'test02.md'
-        destination_repo: 'dmnemec/release-test'
-        user_email: 'devin.nemec@gmail.com'
-        user_name: 'dmnemec'
-
-    - name: Check custom commit message
-      uses: dmnemec/copy_file_to_another_repo_action@master
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source_file: 'test03.md'
-        destination_repo: 'dmnemec/release-test'
-        user_email: 'devin.nemec@gmail.com'
-        user_name: 'dmnemec'
-        commit_message: 'A custom message.'
+        source_file: 'does_not_exist.md'
+        destination_repo: 'ralphieraccoon/ralphieraccoon.github.io'
+        destination_folder: 'documents'
+        user_email: 'example@email.com'
+        user_name: 'ralphieraccoon'
+        destination_branch: 'main'
