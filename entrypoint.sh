@@ -32,7 +32,12 @@ echo "Copying contents to git repo"
 mkdir -p $CLONE_DIR/$INPUT_DESTINATION_FOLDER
 for val in ${INPUT_SOURCE_FILE//,/ };
 do
-  cp --parents -R $val "$CLONE_DIR/$INPUT_DESTINATION_FOLDER"  
+if [ -f "$val" ] 
+then
+  cp --parents -R $val "$CLONE_DIR/$INPUT_DESTINATION_FOLDER"
+else
+  echo "::warning file={$val}::{File not found, skipping copy.}"
+fi  
 done
 cd "$CLONE_DIR"
 
